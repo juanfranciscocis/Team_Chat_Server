@@ -1,7 +1,7 @@
 {
   "name": "01-band_names_server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Flutter Socket Server Backend Template",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,8 +11,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "socket.io": "^2.3.0"
-  }
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.3",
+    "nodemon": "^2.0.20",
+    "socket.io": "^2.5.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanfranciscocis/team_chat_server_.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/juanfranciscocis/team_chat_server_/issues"
+  },
+  "homepage": "https://github.com/juanfranciscocis/team_chat_server_#readme"
 }
