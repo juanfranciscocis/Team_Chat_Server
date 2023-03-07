@@ -102,7 +102,32 @@ const login = async (req,res=response) => {
 
 }
 
+const renewToken = async (req,res=response) => {
+
+
+    //Leer el token que viene gracias al middleware validarJWT, quien toma el token del header y lo transforma en el uid
+    const uid = req.uid;
+    //Generar el JWT
+    const token = await generarJWT(uid);
+    //Obtener el usuario por UID
+    const usuarioDB = await Usuario.findById(uid);
+
+
+
+    res.json({
+        ok: true,
+        //msg:'Crear usuario!!!',
+        usuarioDB, 
+        token
+    })
+
+
+
+}
+
+
 module.exports = {
     crearUsuario,
-    login
+    login,
+    renewToken
 }
