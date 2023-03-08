@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "7dd33808-a969-4484-b712-618acd278586",
+		"name": "TEAM CHAT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "22713879-7dd33808-a969-4484-b712-618acd278586"
+	},
+	"item": [
+		{
+			"name": "New User",
+			"id": "bc64c777-5a94-4dda-a35a-f5c4462fbbec",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/login/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"id": "94e4d2a7-8083-42cb-90af-3ad34d20424b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/login/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Token Renew",
+			"id": "e912cfa6-4e34-412f-9295-ed9512cd11d6",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/login/new",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"login",
+						"new"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
