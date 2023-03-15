@@ -1,10 +1,11 @@
 const { io } = require('../index');
 const { comprobarJWT } = require('../helpers/jwt');
+const { usuarioConectado, usuarioDesconectado } = require('../controllers/socket');
 
 
 
 // Mensajes de Sockets
-io.on('connection', client => {
+io.on('connection', async (client) => {
 
     //console.log(client.handshake.headers['x-token']);
     
@@ -16,9 +17,13 @@ io.on('connection', client => {
     }
     console.log('Cliente conectado');
     console.log(valido, uid);
+    usuarioConectado(uid);
+
+    
 
     client.on('disconnect', () => {
         console.log('Cliente desconectado');
+        usuarioDesconectado(uid);
     });
 
     client.on('mensaje', ( payload ) => {
