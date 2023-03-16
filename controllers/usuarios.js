@@ -10,7 +10,7 @@ const getUsuarios = async(req, res= response) => {
     
         res.json({
             ok: true,
-            msg: usuarios,
+            usuarios: usuarios,
             desde
         })
     
