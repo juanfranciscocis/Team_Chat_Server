@@ -1,37 +1,44 @@
-const { io } = require('../index');
-const { comprobarJWT } = require('../helpers/jwt');
-const { usuarioConectado, usuarioDesconectado } = require('../controllers/socket');
-
-
+const { io } = require("../index");
+const { comprobarJWT } = require("../helpers/jwt");
+const {
+  usuarioConectado,
+  usuarioDesconectado,
+} = require("../controllers/socket");
 
 // Mensajes de Sockets
-io.on('connection', async (client) => {
+io.on("connect", async (client) => {
+  //console.log(client.handshake.headers['x-token']);
+  //Obtener el token, comprobar si es válido y obtener el uid
+  const [valido, uid] = comprobarJWT(client.handshake.headers["x-token"]);
 
-    //console.log(client.handshake.headers['x-token']);
-    
-    const[valido, uid] = comprobarJWT(client.handshake.headers['x-token']);
+  // Verificar autenticación
+  if (!valido) {
+    console.log("Cliente no autenticado");
+    return client.disconnect();
+  }
 
-    if(!valido){
-        console.log('Cliente no autenticado');
-        return client.disconnect();
-    }
-    console.log('Cliente conectado');
-    console.log(valido, uid);
-    usuarioConectado(uid);
+  // Cliente autenticado
+  console.log("Cliente conectado");
+  console.log(valido, uid);
+  usuarioConectado(uid);
 
-    
+  // Ingresar al usuario a una sala en particular
+  // Sala global, client.id, sala de socket.id
+  client.join(uid);
 
-    client.on('disconnect', () => {
-        console.log('Cliente desconectado');
-        usuarioDesconectado(uid);
-    });
+  // Escuchar del cliente el mensaje-personal
+  client.on("mensaje-personal", (payload) => {
+    console.log(payload);
+  });
 
-    client.on('mensaje', ( payload ) => {
-        console.log('Mensaje', payload);
+  client.on("disconnect", () => {
+    console.log("Cliente desconectado");
+    usuarioDesconectado(uid);
+  });
 
-        io.emit( 'mensaje', { admin: 'Nuevo mensaje' } );
+  client.on("mensaje", (payload) => {
+    console.log("Mensaje", payload);
 
-    });
-
-
+    io.emit("mensaje", { admin: "Nuevo mensaje" });
+  });
 });
