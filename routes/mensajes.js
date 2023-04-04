@@ -1,11 +1,13 @@
 /*
-    path = api/usuarios
- */
+    Path : /api/mensajes
+*/
 
 const { Router } = require("express");
-const { getUsuarios } = require("../controllers/usuarios");
 const { validarJWT } = require("../middlewares/validar_jwt");
+const { obtenerChat } = require("../controllers/mensajes");
+
 const router = Router();
-router.get("/", [validarJWT], getUsuarios);
+
+router.get("/:de", [validarJWT], obtenerChat);
 
 module.exports = router;
